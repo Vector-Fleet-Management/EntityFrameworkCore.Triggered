@@ -44,6 +44,8 @@ public class TriggerContextExtensionsTests
 
         var actual = triggerContext.GetEntry();
 
-        Assert.Equal(expected, actual);
+        Assert.Equal(expected, actual, (e, a) => {
+            return e.Entity == a.Entity;
+        });
     }
 }

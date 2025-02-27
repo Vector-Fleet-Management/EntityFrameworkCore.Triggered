@@ -1,4 +1,5 @@
 ﻿using EntityFrameworkCore.Triggered.Internal;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace EntityFrameworkCore.Triggered;
@@ -38,4 +39,6 @@ public class TriggerContext<TEntity>(EntityEntry entityEntry, PropertyValues? or
     public IDictionary<object, object> Items => _entityBagStateManager.GetForEntity(_entityEntry.Entity);
 
     public EntityEntry<TEntity> Entry => (EntityEntry<TEntity>)_entityEntry;
+
+    public DbContext Context => _entityEntry.Context;
 }

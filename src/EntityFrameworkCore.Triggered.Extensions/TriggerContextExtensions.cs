@@ -16,7 +16,7 @@ public static class TriggerContextExtensions
         if (context is not TriggerContext<TEntity> typedContext)
             throw new InvalidOperationException("GetEntry requires ITriggerContext<T> to be of type TriggerContext<T>");
 
-        return typedContext.Entry;
+        return typedContext.Context.Entry(context.Entity);
     }
 
     /// <summary>
@@ -30,6 +30,6 @@ public static class TriggerContextExtensions
         if (context is not TriggerContext<TEntity> typedContext)
             throw new InvalidOperationException("GetDbContext requires ITriggerContext<T> to be of type TriggerContext<T>");
 
-        return typedContext.Entry.Context;
+        return typedContext.Context;
     }
 }
