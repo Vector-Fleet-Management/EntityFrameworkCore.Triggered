@@ -1,4 +1,7 @@
-﻿namespace EntityFrameworkCore.Triggered;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+
+namespace EntityFrameworkCore.Triggered;
 
 public interface ITriggerContext<out TEntity>
     where TEntity : class
@@ -22,4 +25,9 @@ public interface ITriggerContext<out TEntity>
     /// Gets or sets a key/value collection that can be used to share data within the scope of this Entity
     /// </summary>
     IDictionary<object, object> Items { get; }
+
+    /// <summary>
+    /// The active DbContext that raised this trigger.
+    /// </summary>
+    DbContext Context { get; }
 }

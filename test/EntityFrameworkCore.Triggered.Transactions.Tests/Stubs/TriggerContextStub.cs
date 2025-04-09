@@ -1,4 +1,6 @@
-﻿namespace EntityFrameworkCore.Triggered.Transactions.Tests.Stubs;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace EntityFrameworkCore.Triggered.Transactions.Tests.Stubs;
 
 public class TriggerContextStub<TEntity> : ITriggerContext<TEntity>
     where TEntity : class
@@ -7,4 +9,5 @@ public class TriggerContextStub<TEntity> : ITriggerContext<TEntity>
     public TEntity Entity { get; set; }
     public TEntity UnmodifiedEntity { get; set; }
     public IDictionary<object, object> Items { get; set; }
+    public DbContext Context { get; set; }
 }
